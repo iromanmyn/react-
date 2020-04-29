@@ -1,22 +1,22 @@
 import React, { Component } from 'react'
 import store from '../../redux/store'
 import {
-    createIncrementAction,
-    createDecrementAction
-} from '../../redux/count_action_creator'
+    increment,
+    decrement
+} from '../../redux/actions/count'
 export default class Count extends Component {
 
     increment = ()=> {
         //1.获取用户的输入
         const {value} = this.refs.user_selected
         //2.通知redux加value
-        store.dispatch(createIncrementAction(value*1))
+        store.dispatch(increment(value*1))
     }
     decrement = ()=> {
         //1.获取用户的输入
         const {value} = this.refs.user_selected
         //2.通知redux减value
-        store.dispatch(createDecrementAction(value*1))
+        store.dispatch(decrement(value*1))
         
     }
     //当前和是奇数再加
@@ -26,7 +26,7 @@ export default class Count extends Component {
         //2.获取现在的和
         const count = store.getState()
         if(count%2 === 1){
-            store.dispatch(createIncrementAction(value*1))
+            store.dispatch(increment(value*1))
         }
     }
     //等500毫秒再加
@@ -35,7 +35,7 @@ export default class Count extends Component {
         const {value} = this.refs.user_selected
        
         setTimeout(() => {
-            store.dispatch(createIncrementAction(value*1))
+            store.dispatch(increment(value*1))
         }, 500);
     }
 
