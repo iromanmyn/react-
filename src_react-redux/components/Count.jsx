@@ -28,16 +28,10 @@ export default class Count extends Component {
     incrementAsync = ()=> {
         //1.获取用户的输入
         const {value} = this.refs.user_selected
-        //定时器放在自家UI
-        this.props.incrementAsync(value*1,500)
-        // setTimeout(() => {
-        //     this.props.jia(value*1)
-        // }, 500);
-        
-        // axios.post(url,{}).then(
-        //     response => {dispatch(increment(response))},
-        //     error => {}
-        // )
+       
+        setTimeout(() => {
+            this.props.jia(value*1)
+        }, 500);
     }
 
     render() {

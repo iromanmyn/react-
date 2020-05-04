@@ -8,3 +8,18 @@ export const increment = value=> ({type:INCREMENT,data:value})
 
 //创建减
 export const decrement = value=> ({type:DECREMENT,data:value})
+//创建等一等再加的action
+//1.有一种特殊的action 是函数
+//2.该函数会交给store
+//3.store底层加了判断，如果action是函数就立刻调用，且传入store.dispatch
+export const incrementAsync = (value,time)=> {
+    return (dispatch) => {
+        setTimeout(() => {
+            dispatch(increment(value))
+        }, time)
+        // axios.post(url,{}).then(
+        //     response => {dispatch(increment(response))},
+        //     error => {}
+        // )
+    }
+}
